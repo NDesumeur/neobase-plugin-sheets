@@ -2,12 +2,67 @@
 // Ses données sont dans le dossier du plugin, que NeoBase sauvegarde (synchro cloud et sauvegardes) ; à la première ouverture elle reprend ce que tu avais dans NeoBase.
 // Elle demande l'accès complet pour utiliser les outils d'interface de NeoBase. NeoBase ne l'ouvre que si elle est signée.
 const HTML = "";
+/*CSS-MOVED*/ const CSS = `.ofMenu .tbtn{justify-content:flex-start;font:14px var(--text);letter-spacing:0}
+.ofDropM .tbtn{justify-content:flex-start;font:14px var(--text);letter-spacing:0}
+.ofApp{display:flex;background:var(--bg0)}
+.ofSide{width:260px;flex:none;display:flex;flex-direction:column;gap:10px;padding:18px 14px;border-right:3px solid var(--line);background:rgba(var(--d8),.6);overflow:hidden}
+.ofSide .row{gap:8px}
+.ofSide .btn{flex:1;padding:8px 6px;font-size:9px}
+.ofSearch{padding:7px 10px;font-size:14px}
+.ofList{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:2px;margin:0 -6px;padding:0 6px}
+.ofItem{all:unset;cursor:var(--cp,pointer);display:flex;flex-direction:column;gap:2px;padding:8px 10px;color:var(--lilac)}
+.ofItem .n{color:#fff;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ofItem .hint{font-size:12px}
+.ofItem:hover{background:rgba(255,255,255,.04)}
+.ofItem.on{background:rgba(var(--mgr),.18);box-shadow:inset 3px 0 0 var(--magenta)}
+.ofBody{flex:1;min-width:0;display:flex;flex-direction:column}
+.ofEmpty{flex:1;display:grid;place-items:center;padding:30px}
+.ofEmptyIn{max-width:520px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.ofEmptyIn img{width:96px;height:96px;image-rendering:pixelated}
+.ofEmptyIn h2{font:16px var(--title);color:#fff;margin:0}
+.ofEmptyIn p{font-size:16px;line-height:1.5;margin:0}
+.ofMain{flex:1;min-height:0;display:flex;flex-direction:column}
+.f.ofTitle{margin:12px 16px 0;width:auto;align-self:stretch;font-size:18px;padding:8px 12px;background:transparent;box-shadow:none}
+.ofTitle:focus{background:var(--field)}
+.ofBar{display:flex;flex-wrap:wrap;gap:3px;align-items:center;padding:8px 14px;border-bottom:3px solid var(--line)}
+.ofTb{all:unset;cursor:var(--cp,pointer);min-width:30px;height:30px;padding:0 7px;display:grid;place-items:center;color:var(--lilac);font-size:15px;background:var(--btn)}
+.ofTb:hover{background:var(--btnh);color:#fff}
+.ofTb.on{background:rgba(var(--mgr),.4);color:#fff}
+.ofTb.b{font-weight:bold}
+.ofTb.i{font-style:italic}
+.ofTb.u{text-decoration:underline}
+.ofTb.s{text-decoration:line-through}
+.ofSep{width:2px;height:22px;background:var(--line);margin:0 4px}
+.ofSel{height:30px;padding:0 6px;font-size:14px}
+.ofColor{width:30px;height:30px;padding:0;border:0;background:none;cursor:var(--cp,pointer)}
+.ofDrop{position:relative}
+.ofDrop .ofTb{font-size:14px}
+.ofDropM{position:absolute;top:34px;left:0;z-index:20;--fill:var(--win);--c:var(--line2);display:none;flex-direction:column;min-width:210px;padding:6px;filter:drop-shadow(0 4px 0 var(--out))}
+.ofDrop.on .ofDropM{display:flex}
+.ofDropM .tbtn{padding:8px 10px}
+.ofDropM .tbtn:hover{background:rgba(var(--mgr),.16);color:#fff}
+.ofStatus{padding:6px 16px;font-size:13px;color:var(--muted);border-top:3px solid var(--line)}
+.shFx{display:flex;align-items:center;gap:8px;padding:6px 14px;border-bottom:3px solid var(--line)}
+.shName{min-width:80px;font:11px var(--title);color:var(--lilac)}
+.shFxL{font-style:italic;color:var(--muted)}
+.shInput{flex:1;padding:6px 10px;font:14px Consolas,monospace}
+.shGridW{flex:1;overflow:auto;position:relative;background:#fff;outline:none}
+.shGrid th.shRh{left:0;width:46px;cursor:e-resize}
+.shGrid th.shCorner{top:0;left:0;z-index:3;width:46px}
+.shGrid tr:first-child th.shCh{cursor:var(--cp,pointer)}
+.shGrid td.num{text-align:right}
+.shEdit{position:absolute;z-index:5;border:2px solid #8a5cf0;font:14px Calibri,'Segoe UI',sans-serif;padding:0 4px;outline:none;color:#111;background:#fff;box-sizing:border-box}
+.shTab{all:unset;cursor:var(--cp,pointer);padding:6px 14px;color:var(--lilac);font-size:14px;background:var(--btn)}
+.shTab.on{background:rgba(var(--mgr),.35);color:#fff}
+.shTab.add{font:12px var(--title)}
+`;  // le style de ce plugin (il utilise les variables du thème de NeoBase)
 export default async function (ctx) {
   const view = ctx.view;
   if (!ctx.host) { view.textContent = "Ce plugin doit être approuvé par NeoBase pour s'ouvrir."; return; }
   const host = ctx.host, { el, toast, sfx, ask, newTab, pixIcon, PIX, WX } = host;
   const nbConfirm = host.confirm;  // la boîte de confirmation de NeoBase, à la place de celle de Windows
   const folder = ctx.folder, legacy = ctx.legacy || {};
+  ctx.host.addStyle(CSS);
   view.innerHTML = HTML;
   const $ = id => id === "sheetsApp" ? view : (view.querySelector('#' + id) || document.getElementById(id));  // les identifiants de ta vue d'abord, puis ceux de la page (fenêtres, menus)
   const doc = async n => { try { return await folder.read(n); } catch { return null; } };
