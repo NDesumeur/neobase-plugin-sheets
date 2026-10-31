@@ -47,11 +47,44 @@ const HTML = "";
 .shFxL{font-style:italic;color:var(--muted)}
 .shInput{flex:1;padding:6px 10px;font:14px Consolas,monospace}
 .shGridW{flex:1;overflow:auto;position:relative;background:#fff;outline:none}
-.shGrid th.shRh{left:0;width:46px;cursor:e-resize}
-.shGrid th.shCorner{top:0;left:0;z-index:3;width:46px}
-.shGrid tr:first-child th.shCh{cursor:var(--cp,pointer)}
-.shGrid td.num{text-align:right}
-.shEdit{position:absolute;z-index:5;border:2px solid #8a5cf0;font:14px Calibri,'Segoe UI',sans-serif;padding:0 4px;outline:none;color:#111;background:#fff;box-sizing:border-box}
+/* ---- l'allure d'un tableur ---- */
+.shX{background:#fff;color:#202124;font-family:'Segoe UI',Arial,sans-serif}
+.shX .f.ofTitle{margin:0;padding:10px 16px 6px;font:600 18px 'Segoe UI',Arial,sans-serif;color:#202124;background:#fff;box-shadow:none;border-radius:0}
+.shX .ofTitle:focus{background:#f1f3f4}
+.shX .ofBar{background:#f1f3f4;border-bottom:1px solid #dadce0;padding:4px 10px;gap:2px}
+.shX .ofTb{background:transparent;color:#3c4043;border-radius:4px;min-width:28px;height:28px;font:15px 'Segoe UI',Arial,sans-serif}
+.shX .ofTb:hover{background:#e3e6e8;color:#202124}.shX .ofTb.on{background:#d3e3fd;color:#041e49}
+.shX .ofSep{background:#c7cacd;width:1px;margin:0 6px}
+.shX .ofSel{height:28px;background:#fff;color:#202124;border:1px solid #dadce0;border-radius:4px;font:13px 'Segoe UI',Arial,sans-serif;box-shadow:none}
+.shX .ofColor{height:28px;width:28px}
+.shX .ofDrop .ofTb{padding:0 10px;font-size:13px}
+.shX .ofDropM{background:#fff;--fill:#fff;border:1px solid #dadce0;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.25);filter:none;top:32px}
+.shX .ofDropM .tbtn{color:#202124;font:13px 'Segoe UI',Arial,sans-serif;border-radius:4px}.shX .ofDropM .tbtn:hover{background:#f1f3f4;color:#202124}
+.shX .shFx{background:#fff;border-bottom:1px solid #dadce0;padding:4px 8px;gap:0}
+.shX .shName{min-width:84px;text-align:center;font:13px 'Segoe UI',Arial,sans-serif;color:#202124;padding:5px 8px;border:1px solid #dadce0;border-radius:4px 0 0 4px;background:#fff}
+.shX .shFxL{padding:5px 12px;font:italic 700 15px 'Times New Roman',serif;color:#80868b;border-top:1px solid #dadce0;border-bottom:1px solid #dadce0;background:#fff}
+.shX .shInput{background:#fff;color:#202124;font:13px 'Segoe UI',Arial,sans-serif;border:1px solid #dadce0;border-radius:0 4px 4px 0;box-shadow:none;padding:5px 10px}
+.shX .shInput:focus{border-color:#1a73e8;outline:none}
+.shX .shGridW{background:#fff}
+.shTbl{border-collapse:separate;border-spacing:0;table-layout:fixed;font:13px Arial,'Segoe UI',sans-serif;color:#202124;user-select:none}
+.shTbl th{position:sticky;background:#f8f9fa;color:#5f6368;font:12px 'Segoe UI',Arial,sans-serif;font-weight:400;text-align:center;height:22px;padding:0 4px;z-index:1;border-right:1px solid #c7c7c7;border-bottom:1px solid #c7c7c7;overflow:visible}
+.shTbl tr:first-child th{top:0;cursor:default}
+.shTbl th.on{background:#e8eaed;color:#202124;font-weight:600}
+.shTbl tr:first-child th.on{box-shadow:inset 0 -3px 0 #1a73e8}.shTbl th.shRh.on{box-shadow:inset -3px 0 0 #1a73e8}
+.shTbl th.shRh{left:0;width:46px;z-index:2;cursor:default}
+.shTbl th.shCorner{top:0;left:0;z-index:3;width:46px;background:#f8f9fa linear-gradient(135deg,transparent 60%,#bdc1c6 60%) no-repeat right 4px bottom 4px/12px 12px}
+.shTbl th.shCh::after{content:'';position:absolute;right:-3px;top:0;bottom:0;width:6px;cursor:col-resize;z-index:2}
+.shTbl th.shCh:hover{background:#eceff1}
+.shTbl td{border-right:1px solid #e1e3e6;border-bottom:1px solid #e1e3e6;height:22px;padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:cell;background:#fff}
+.shTbl td.err{color:#d93025}.shTbl td.num{text-align:right}
+.shTbl td.sel{background-color:#e8f0fe!important}.shTbl td.cur{outline:2px solid #1a73e8;outline-offset:-2px;background-color:#fff!important}
+.shEdit{border:2px solid #1a73e8;font:13px Arial,'Segoe UI',sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.shX .shTabs{background:#f1f3f4;border-top:1px solid #dadce0;padding:0 8px;gap:0}
+.shX .shTab{background:transparent;color:#3c4043;border-radius:0 0 4px 4px;padding:7px 18px;font:13px 'Segoe UI',Arial,sans-serif}
+.shX .shTab:hover{background:#e3e6e8}.shX .shTab.on{background:#fff;color:#188038;font-weight:600;box-shadow:inset 0 -3px 0 #188038,0 1px 3px rgba(0,0,0,.2)}
+.shX .shTab.add{font:700 16px 'Segoe UI',Arial,sans-serif;padding:4px 14px}
+.shX .ofStatus{background:#f8f9fa;color:#5f6368;border-top:1px solid #dadce0;text-align:right;font:12px 'Segoe UI',Arial,sans-serif;padding:5px 14px}
+.shEdit{position:absolute;z-index:5;padding:0 4px;outline:none;color:#111;background:#fff;box-sizing:border-box}
 .shTab{all:unset;cursor:var(--cp,pointer);padding:6px 14px;color:var(--lilac);font-size:14px;background:var(--btn)}
 .shTab.on{background:rgba(var(--mgr),.35);color:#fff}
 .shTab.add{font:12px var(--title)}
@@ -381,10 +414,10 @@ function shHtml(f, calc) {  // printable tables of every sheet
   return `<!doctype html><html><head><meta charset="utf-8"><style>body{font:10pt Calibri,Arial,sans-serif}table{border-collapse:collapse}td{border:1px solid #bbb;padding:3px 6px;white-space:nowrap}h2{font-size:13pt}</style></head><body>${body}</body></html>`;
 }
 nsh.mount = main => {
-  const title = el('input', 'f ofTitle'), bar = el('div', 'ofBar'), fx = el('div', 'shFx'), name = el('span', 'shName'), input = el('input', 'f shInput'), gridW = el('div', 'shGridW'), grid = el('table', 'shGrid');
+  const title = el('input', 'f ofTitle'), bar = el('div', 'ofBar'), fx = el('div', 'shFx'), name = el('span', 'shName'), input = el('input', 'f shInput'), gridW = el('div', 'shGridW'), grid = el('table', 'shTbl');
   const tabsBar = el('div', 'shTabs'), status = el('div', 'ofStatus'), edit = el('input', 'shEdit');
   title.spellcheck = input.spellcheck = edit.spellcheck = false; title.placeholder = 'Nom du classeur'; input.placeholder = 'Valeur ou formule (=SOMME(A1:A5))';
-  gridW.tabIndex = 0; edit.style.display = 'none';
+  gridW.tabIndex = 0; edit.style.display = 'none'; main.classList.add('shX');
   const style = (k, v) => () => shStyle(k, v);
   const color = Object.assign(el('input', 'ofColor'), {type: 'color', value: '#1d1d1f', title: 'Couleur du texte'}), bg = Object.assign(el('input', 'ofColor'), {type: 'color', value: '#fff3a8', title: 'Couleur de fond'});
   color.oninput = () => shStyle('c', color.value); bg.oninput = () => shStyle('bg', bg.value);
@@ -456,14 +489,14 @@ function shStyle(k, v) {
 // size of the grid shown: what is used, plus room around it
 function shSize() {
   const keys = Object.keys(shSheet().cells).map(shCell).filter(Boolean);
-  nsh.cols = Math.max(14, ...keys.map(k => k.c + 4), nsh.sel.c2 + 3); nsh.rows = Math.max(60, ...keys.map(k => k.r + 20), nsh.sel.r2 + 10);
+  nsh.cols = Math.max(26, ...keys.map(k => k.c + 4), nsh.sel.c2 + 3); nsh.rows = Math.max(100, ...keys.map(k => k.r + 20), nsh.sel.r2 + 10);
 }
 function shBuild() {
   if (!nsh.cur) return;
   shSize();
   const s = shSheet(), head = el('tr'), rows = [head], corner = el('th', 'shCorner');
   head.append(corner);
-  for (let c = 0; c < nsh.cols; c++) { const th = el('th', 'shCh', shColName(c)); th.dataset.col = c; th.style.width = (s.cw?.[shColName(c)] || 96) + 'px'; head.append(th); }
+  for (let c = 0; c < nsh.cols; c++) { const th = el('th', 'shCh', shColName(c)); th.dataset.col = c; th.style.width = (s.cw?.[shColName(c)] || 100) + 'px'; head.append(th); }
   for (let r = 0; r < nsh.rows; r++) {
     const tr = el('tr'), th = el('th', 'shRh', String(r + 1)); th.dataset.row = r; tr.append(th);
     for (let c = 0; c < nsh.cols; c++) { const td = el('td'); td.dataset.c = c; td.dataset.r = r; tr.append(td); }
