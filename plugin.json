@@ -1,0 +1,19 @@
+{
+  "id": "neobase.sheets",
+  "name": "NeoSheets",
+  "version": "1.0.0",
+  "author": "NDesumeur",
+  "description": "Un tableur : formules, fonctions, mise en forme, graphiques. Ouvre et enregistre les fichiers Excel.",
+  "icon": "icon.png",
+  "entry": "index.js",
+  "view": "sheets",
+  "neobase": ">=4.0.0",
+  "type": "app",
+  "category": "Bureautique",
+  "mobile": false,
+  "system": false,
+  "dependencies": {},
+  "permissions": [
+    "full"
+  ]
+}
