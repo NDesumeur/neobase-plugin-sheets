@@ -1,9 +1,0 @@
-{
-  "pluginId": "neobase.sheets",
-  "repo": "NDesumeur/neobase-plugin-sheets",
-  "version": "1.1.0",
-  "sha256": "f5c41518776979e3b0df5eb2f6b51999645fd03f04eef58da4640df8a9dbf556",
-  "approvedAt": "2026-10-31T22:44:05.994Z",
-  "neobase": ">=4.0.0",
-  "signature": "xmquvaNXN7TygXhKglLTHVUNMJEQKIWbfjXHht+VvpkSQUypHwbDb5xxgiTA3sPtR92iFuUDlO9Zl/tzzc3ZDQ=="
-}
