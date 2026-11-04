@@ -1,6 +1,6 @@
 // NeoSheets : ton appli d'origine (HTML et code inchangés), livrée en plugin.
-// Ses données sont dans le dossier du plugin, que NeoBase sauvegarde (synchro cloud et sauvegardes) ; à la première ouverture elle reprend ce que tu avais dans NeoBase.
-// Elle tourne dans le bac à sable de NeoBase, avec ses outils d'interface (ctx.host) et seulement les autorisations de son plugin.json.
+// Ses données sont dans le dossier du plugin, que NeoDex sauvegarde (synchro cloud et sauvegardes) ; à la première ouverture elle reprend ce que tu avais dans NeoDex.
+// Elle tourne dans le bac à sable de NeoDex, avec ses outils d'interface (ctx.host) et seulement les autorisations de son plugin.json.
 const HTML = "";
 /*CSS-MOVED*/ const CSS = `.ofMenu .tbtn{justify-content:flex-start;font:14px var(--text);letter-spacing:0}
 .ofDropM .tbtn{justify-content:flex-start;font:14px var(--text);letter-spacing:0}
@@ -88,12 +88,12 @@ const HTML = "";
 .shTab{all:unset;cursor:var(--cp,pointer);padding:6px 14px;color:var(--lilac);font-size:14px;background:var(--btn)}
 .shTab.on{background:rgba(var(--mgr),.35);color:#fff}
 .shTab.add{font:12px var(--title)}
-`;  // le style de ce plugin (il utilise les variables du thème de NeoBase)
+`;  // le style de ce plugin (il utilise les variables du thème de NeoDex)
 export default async function (ctx) {
   const view = ctx.view;
-  if (!ctx.host) { view.textContent = "Ce plugin doit être approuvé par NeoBase pour s'ouvrir."; return; }
+  if (!ctx.host) { view.textContent = "Ce plugin doit être approuvé par NeoDex pour s'ouvrir."; return; }
   const host = ctx.host, { el, toast, sfx, ask, newTab, pixIcon, PIX, WX } = host;
-  const nbConfirm = host.confirm;  // la boîte de confirmation de NeoBase, à la place de celle de Windows
+  const nbConfirm = host.confirm;  // la boîte de confirmation de NeoDex, à la place de celle de Windows
   const folder = ctx.folder, legacy = ctx.legacy || {};
   ctx.host.addStyle(CSS);
   view.innerHTML = HTML;
@@ -378,7 +378,7 @@ console.assert(shMoveRefs('=A1+$B$2+"A1"', (c, r, ac, ar) => ({c: ac ? c : c + 1
 
 /* ---------- the app ---------- */
 const SH_NF = {auto: 'Automatique', n0: 'Nombre entier', n2: 'Nombre (2 décimales)', pct: 'Pourcentage', eur: 'Euros', text: 'Texte'};
-const nsh = {kind: 'sheet', key: 'neodyme:sheets', view: 'sheetsApp', name: 'NeoSheets', newName: 'Classeur', openHint: 'Ouvrir un fichier Excel (.xlsx, .xls), OpenDocument (.ods) ou CSV',
+const nsh = {kind: 'sheet', key: 'neodex:sheets', view: 'sheetsApp', name: 'NeoSheets', newName: 'Classeur', openHint: 'Ouvrir un fichier Excel (.xlsx, .xls), OpenDocument (.ods) ou CSV',
   intro: 'Tableur : formules (SOMME, MOYENNE, SI, RECHERCHEV, NB.SI…), mises en forme, tri, graphiques, plusieurs feuilles. Copie-colle avec Excel. Tes classeurs sont enregistrés tout seuls et synchronisés entre tes PC.',
   newData: () => ({sheets: [{name: 'Feuille 1', cells: {}, cw: {}}], cur: 0}),
   fromImport: r => ({sheets: r.sheets.map(s => ({name: s.name, cells: Object.fromEntries(Object.entries(s.cells).filter(([, v]) => v !== '').map(([a, v]) => [a, {raw: v}])),
