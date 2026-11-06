@@ -1,9 +1,9 @@
 {
   "pluginId": "neodex.sheets",
   "repo": "NDesumeur/neodex-plugin-sheets",
-  "version": "1.2.0",
-  "sha256": "625e2b1415b0e1c9782fa3ae621dc2a9d8d5622c18509a36d6b3ab23f2591670",
-  "approvedAt": "2026-11-04T10:05:10.926Z",
+  "version": "1.2.1",
+  "sha256": "2ed1a99b11e2c0dc54d0e695dcac2f12440ca06df89cfdbdc178e3a7e6f2572d",
+  "approvedAt": "2026-11-06T21:35:48.024Z",
   "neobase": ">=4.0.0",
-  "signature": "ZjKDeEfwlOn1ZYzWktTmqV2fmq1BcdkdnFCLfmDysutb8m52VGJcKWtqY61F/ayEFX53TFBDXNqxaS2aKT+9Cw=="
+  "signature": "xbICDp2VAevryZ2cs9renSr3C8NAfNf7U5Jm35FN2SGQ822K7dmkHz84mjwZ7IGxY2H0ZZ0bIzG4cLAhxoLOAQ=="
 }
