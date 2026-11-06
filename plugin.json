@@ -1,7 +1,7 @@
 {
   "id": "neodex.sheets",
   "name": "NeoSheets",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "NDesumeur",
   "description": "Un tableur : formules, fonctions, mise en forme, graphiques. Ouvre et enregistre les fichiers Excel.",
   "icon": "icon.png",
